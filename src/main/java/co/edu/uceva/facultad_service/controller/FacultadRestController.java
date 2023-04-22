@@ -4,5 +4,5 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FacultadRestController {
-    //TODO Añadir los atributos de FacultadRestController
+
 }
