@@ -55,19 +55,6 @@ public class FacultadRestControllerTest {
     }
 
     /**
-     * Prueba del método GET "/facultad-service/facultad/{nombre}", que comprueba que se recibe el nombre correcto
-     * en la respuesta.
-     * @throws Exception
-     */
-    @Test
-    public void testNombre() throws Exception{
-        String nombre = "Ingenieria";
-        this.mockMvc.perform(get("/facultad-service/facultad/{nombre}", nombre))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Hola " + nombre));
-    }
-
-    /**
      * Prueba del método GET "/facultad-service/listar", que comprueba que se recibe una lista de países en la respuesta.
      * @throws Exception
      */
@@ -160,7 +147,7 @@ public class FacultadRestControllerTest {
         facultad1.setNombre("Ingeniería");
         facultadService.save(facultad1);
 
-        this.mockMvc.perform(delete("/facultad-service/facultad/{id}", facultad1.getId()))
+        this.mockMvc.perform(delete("/facultad-service/listar/{id}", facultad1.getId()))
                 .andExpect(status().isOk());
 
         assertNull(facultadService.findById(facultad1.getId()));

@@ -12,7 +12,7 @@ public interface IFacultadService {
 
     Facultad update (Facultad facultad);
 
-    Facultad findById(long id);
+    Facultad findById(Long id);
 
     List<Facultad> findAll();
 }

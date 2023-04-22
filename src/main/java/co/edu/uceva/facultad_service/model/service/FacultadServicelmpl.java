@@ -5,6 +5,7 @@ import co.edu.uceva.facultad_service.model.dao.IFacultadDao;
 import co.edu.uceva.facultad_service.model.entities.Facultad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,7 +32,14 @@ public class FacultadServicelmpl implements IFacultadService{
     }
 
     @Override
+    public Facultad findById(Long id) {
+        return facultadDao.findById(id).get();
+    }
+
+    @Override
+    @Transactional(readOnly = true)  //Para ejecutar en modo de solo lectura
     public List<Facultad> findAll() {
-        return (List<Facultad>) facultadDao.findAll();
+        List<Facultad> facultad = (List<Facultad>) facultadDao.findAll();
+        return facultad;
     }
 }
